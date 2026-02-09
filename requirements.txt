@@ -2,3 +2,5 @@ fastapi
 uvicorn
 validators
 requests
+flask
+gunicorn
