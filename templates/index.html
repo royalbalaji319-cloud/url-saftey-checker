@@ -1,15 +1,14 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <title>URL Safety Checker</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
   </head>
   <body>
     <div class="container">
       <h2>URL Safety Checker</h2>
+      <p class="author">Built by <span>Balajiakula</span></p>
 
       <form method="POST">
         <input type="text" name="url" placeholder="Enter URL" required />
@@ -17,7 +16,7 @@
       </form>
 
       {% if status %}
-      <h3>Status: {{ status }}</h3>
+      <h3 class="status {{ status|lower }}">Status: {{ status }}</h3>
       <ul>
         {% for r in reasons %}
         <li>{{ r }}</li>
