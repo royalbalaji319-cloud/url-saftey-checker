@@ -1,55 +1,68 @@
-#  URL Safety Checker
+#  URL Safety Checker (Python + Flask)
 
-A simple and effective **URL Safety Checker** built using **Python (Flask)**.  
-This tool helps users identify whether a given URL is **SAFE**, **UNSAFE**, or **INVALID** based on multiple security checks.
+This project is a **URL Safety Checker** built using **Python and Flask**.  
+It helps users identify whether a given URL is **SAFE**, **UNSAFE**, or **INVALID** based on basic security checks.
 
 ---
 
 ##  Features
 
--  Detects **valid vs invalid URLs**
--  Checks **HTTPS / encryption**
--  Detects **URL shorteners** (bit.ly, tinyurl, etc.)
--  Identifies **suspicious keywords**
--  Flags **high-risk domain extensions**
--  Detects **IP-based URLs**
--  Clean and responsive UI
+- Validates whether input is a **proper URL**
+- Detects **HTTP / non-HTTPS** links
+- Identifies **URL shorteners** (bit.ly, tinyurl, etc.)
+- Flags **suspicious keywords** (free, login, otp, reward, etc.)
+- Detects **high-risk domain extensions**
+- Identifies **IP-based URLs**
+- Clean and simple user interface
+- Beginner-friendly cybersecurity project
 
 ---
 
-##  Tech Stack
+##  Technologies Used
 
-- **Backend:** Python, Flask  
-- **Frontend:** HTML, CSS  
-- **Libraries:** urllib, regex  
+- Python  
+- Flask  
+- HTML5  
+- CSS3  
+- Visual Studio Code  
 
 ---
 
 ##  Project Structure
 
 url-safety-checker/
-│── main.py
-│── checker.py
-│── requirements.txt
-│── templates/
+│
+├── main.py
+├── checker.py
+├── requirements.txt
+├── templates/
 │ └── index.html
-│── static/
+├── static/
 │ └── style.css
+└── README.md
 
 
+---
 
-# Example Results
-# SAFE
-https://google.com
-# UNSAFE
-bit.ly/free-money
-# INVALID
-Thanks for messaging our website
- Deployment
-This project can be easily deployed on:
-# Render
+##  Live Preview
 
+**Live Link:**  
+ https://your-render-link.onrender.com  
 
-Author
-# Balaji Akula 
-Beginner-friendly cybersecurity & Python projects \
+(Screenshots or demo images can be added here)
+
+---
+
+##  Project Objective
+
+- Learn basic **cybersecurity concepts**
+- Practice **Python & Flask**
+- Understand **URL threat detection**
+- Build a real-world beginner project
+- Create a portfolio-ready application
+
+---
+
+👤 Author
+Balaji Akula
+Cybersecurity Learner | Python & Flask Developer
