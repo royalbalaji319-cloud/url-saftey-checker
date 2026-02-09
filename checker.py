@@ -1,48 +1,47 @@
-import re
 from urllib.parse import urlparse
+import re
 
-def is_valid_url(url):
-    pattern = re.compile(
-        r'^(https?:\/\/)?'              # http or https (optional)
-        r'([\da-z.-]+)\.'               # domain name
-        r'([a-z.]{2,6})'                # TLD
-        r'([\/\w .-]*)*\/?$'            # path
-    )
-    return re.match(pattern, url)
-
-
-def check_url_safety(url):
+def check_url(url):
     url = url.strip()
+
+    # 🚫 Empty input
+    if not url:
+        return "INVALID", ["URL cannot be empty"]
+
+    parsed = urlparse(url)
+
+    # 🚫 Not a URL at all
+    # Must have scheme AND domain AND dot in domain
+    if not parsed.scheme or not parsed.netloc or "." not in parsed.netloc:
+        return "INVALID", [
+            "Input is not a valid URL",
+            "Only links like https://example.com are allowed"
+        ]
+
+    # 🚫 Scheme must be http or https
+    if parsed.scheme not in ["http", "https"]:
+        return "INVALID", ["Only HTTP or HTTPS URLs are allowed"]
+
     reasons = []
 
-    # ❌ If not a valid URL
-    if not is_valid_url(url):
-        return "INVALID", ["Please enter a valid URL (example: https://example.com)"]
-
-    parsed = urlparse(url if url.startswith("http") else "http://" + url)
-
-    # Protocol check
+    # 🔐 HTTPS check
     if parsed.scheme != "https":
         reasons.append("Uses HTTP or no HTTPS (not encrypted)")
 
-    # URL shorteners
-    shorteners = ["bit.ly", "tinyurl.com", "t.co"]
-    if any(s in parsed.netloc for s in shorteners):
-        reasons.append("Uses URL shortener (destination hidden)")
-
-    # Risky domains
-    risky_tlds = [".xyz", ".top", ".info", ".site"]
-    if any(parsed.netloc.endswith(tld) for tld in risky_tlds):
-        reasons.append("High-risk domain extension")
-
-    # Suspicious keywords
-    keywords = ["free", "money", "login", "verify", "update", "otp", "reward"]
-    if any(k in url.lower() for k in keywords):
+    # ⚠️ Suspicious keywords
+    phishing_keywords = [
+        "login", "verify", "update", "secure",
+        "account", "bank", "confirm", "password"
+    ]
+    if any(word in url.lower() for word in phishing_keywords):
         reasons.append("Contains suspicious keywords")
 
-    # IP-based URL
-    if re.match(r"\d+\.\d+\.\d+\.\d+", parsed.netloc):
-        reasons.append("Uses IP address instead of domain")
+    # 🔗 URL shorteners
+    shorteners = ["bit.ly", "tinyurl", "t.co"]
+    if any(s in parsed.netloc.lower() for s in shorteners):
+        reasons.append("Uses shortened URL (can hide real destination)")
 
-    status = "UNSAFE" if len(reasons) >= 2 else "SAFE"
-    return status, reasons
+    if reasons:
+        return "UNSAFE", reasons
+
+    return "SAFE", ["No suspicious patterns detected"]
