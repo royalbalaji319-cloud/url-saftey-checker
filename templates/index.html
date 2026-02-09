@@ -3,26 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <title>URL Safety Checker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
   <body>
-    <div class="container">
-      <h2>URL Safety Checker</h2>
-      <p class="author">Built by <span>Balajiakula</span></p>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <h1>URLSafe</h1>
+      <p class="creator">Built by <span>Balajiakula</span></p>
+    </header>
 
-      <form method="POST">
-        <input type="text" name="url" placeholder="Enter URL" required />
-        <button type="submit">Check</button>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h2>Check if a URL is Safe</h2>
+      <p>Protect yourself from phishing, scams, and malicious links</p>
+
+      <form method="POST" class="hero-form">
+        <input type="text" name="url" placeholder="Enter URL here" required />
+        <button type="submit">Check URL</button>
       </form>
 
       {% if status %}
       <h3 class="status {{ status|lower }}">Status: {{ status }}</h3>
-      <ul>
+
+      {% if reasons %}
+      <ul class="reasons">
         {% for r in reasons %}
         <li>{{ r }}</li>
         {% endfor %}
       </ul>
-      {% endif %}
-    </div>
+      {% endif %} {% endif %}
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <h2>What We Check</h2>
+      <div class="feature-grid">
+        <div class="card">🔒 HTTPS Security</div>
+        <div class="card">⚠️ Phishing Keywords</div>
+        <div class="card">🌐 Domain Risk</div>
+        <div class="card">🔗 Shortened URLs</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <div class="about-text">
+        <h2>Why use URLSafe?</h2>
+        <p>
+          URLSafe helps users detect suspicious links using smart heuristics.
+          Perfect for beginners, students, and cybersecurity learners.
+        </p>
+      </div>
+      <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" />
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <p>✔ What is a malicious URL?</p>
+      <p>✔ Is this tool free?</p>
+      <p>✔ Does it detect phishing?</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Built by <span>Balajiakula</span> 🚀</p>
+    </footer>
   </body>
 </html>
