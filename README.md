@@ -39,11 +39,11 @@ url-safety-checker/
 
 
 # Example Results
- SAFE
+# SAFE
 https://google.com
- UNSAFE
+# UNSAFE
 bit.ly/free-money
-INVALID
+# INVALID
 Thanks for messaging our website
  Deployment
 This project can be easily deployed on:
