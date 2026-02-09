@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>URL Safety Checker</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>URL Safety Checker</h2>
+
+      <form method="POST">
+        <input type="text" name="url" placeholder="Enter URL" required />
+        <button type="submit">Check</button>
+      </form>
+
+      {% if status %}
+      <h3>Status: {{ status }}</h3>
+      <ul>
+        {% for r in reasons %}
+        <li>{{ r }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </body>
+</html>
