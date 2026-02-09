@@ -47,9 +47,9 @@ url-safety-checker/
 ##  Live Preview
 
 **Live Link:**  
-  Live Demo : https://url-saftey-checker.onrender.com
+  Live Demo : https://url-saftey-checker.onrender.com/
 
-(<img width="1919" height="926" alt="image" src="https://github.com/user-attachments/assets/cb848c02-509a-4946-9d5d-4607509adca4" />)
+<img width="1903" height="862" alt="image" src="https://github.com/user-attachments/assets/61af2456-5e46-449d-b4a9-8b45f2a48b35" />
 
 ---
 
